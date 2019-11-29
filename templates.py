@@ -403,7 +403,7 @@ ADD_FIREWALL_POLICY = """
             {% if status is defined %}
                 "status": "{{ status }}",
             {% else %}
-                "status": "enable",        "json": {
+                "status": "enable",
             {% endif %}
             "service":  [{
                 {% if service is defined %}
