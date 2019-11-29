@@ -12,20 +12,19 @@ login = Forti.login(host=host, username=username, password=password)
 
 
 #从txt文本从读取external ip和mapped ip，并分别给到不同的变量，默认是列表
-# with open ("D:vipex.txt",'r') as f:
-#     vipex = f.read().splitlines()
-# with open ("D:vipmap.txt","r") as f1:
-#     vipmap = f1.read().splitlines()
-# # print(vipex)
-# # print(vipmap)
-# start = time.time() #计时
-# #在add_vip函数的参数中使用变量，并从上面生成的列表中取值，然后通过for循环执行add_vip即可实现匹配生成配置
-# for i in range(0,5000):
-#     Forti.add_vip(vdom="root", name="test"+str(i), extip=vipex[i], extintf="any", mappedip=vipmap[i])
-#
-# end = time.time() #计时
-# TotalTime = end - start #计算读取使用的时间
-# print("一共用了"+str(round(TotalTime,2))+"秒")
+with open ("D:vipex.txt",'r') as f:
+    vipex = f.read().splitlines()
+with open ("D:vipmap.txt","r") as f1:
+    vipmap = f1.read().splitlines()
+    
+start = time.time() #计时
+#在add_vip函数的参数中使用变量，并从上面生成的列表中取值，然后通过for循环执行add_vip即可实现匹配生成配置
+for i in range(0,5000):
+    Forti.add_vip(vdom="root", name="test"+str(i), extip=vipex[i], extintf="any", mappedip=vipmap[i])
+
+end = time.time() #计时
+TotalTime = end - start #计算读取使用的时间
+print("一共用了"+str(round(TotalTime,2))+"秒")
 #同样循环name参数即可批量删除配置
 start = time.time() #计时
 for i in range(5000):
